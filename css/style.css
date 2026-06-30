@@ -220,3 +220,53 @@ body {
     font-size:24px;
 }
 
+/* Main Card */
+
+.weather-details{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:20px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:25px;
+}
+
+/* Each Detail Card */
+.detail-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:white;
+}
+
+/* Icons */
+.detail-card i{
+    font-size:28px;
+    color:var(--accent);
+}
+
+/* Labels */
+.detail-card p{
+    font-size:15px;
+    color:var(--text-light);
+}
+
+/* Values */
+.detail-card h3{
+    margin-top:6px;
+    font-size:24px;
+    font-weight:600;
+}
+
+/* Hover Effect */
+.detail-card{
+    transition:.3s;
+}
+
+.detail-card:hover{
+    transform:translateY(-4px);
+}
+
