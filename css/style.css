@@ -270,3 +270,68 @@ body {
     transform:translateY(-4px);
 }
 
+/* Forecast Section */
+
+.forecast{
+    padding:35px;
+}
+
+.forecast h2{
+    color:white;
+    font-size:34px;
+    margin-bottom:30px;
+}
+
+.forecast-container{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+.forecast-card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    color:white;
+    transition:.3s;
+}
+
+/* Hover Effect */
+.forecast-card:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,.12);
+}
+
+/* Day */
+.forecast-card h3{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+/* Date */
+.forecast-card p{
+    color:var(--text-light);
+    margin-bottom:20px;
+}
+
+/* Icon */
+.forecast-card img{
+    width:80px;
+    margin:15px 0;
+}
+
+/* Temperature */
+.forecast-card h4{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+/* Minimum Temperature */
+.forecast-card span{
+    color:var(--text-light);
+    font-size:22px;
+}
+
