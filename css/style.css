@@ -155,3 +155,68 @@ body {
 .location-btn:hover{
     transform:translateY(-2px);
 }
+
+.weather-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:60px;
+}
+
+.weather-info{
+    color:white;
+}
+
+.city-section h1{
+    font-size:64px;
+    font-weight:700;
+}
+
+.city-section p{
+    margin-top:10px;
+    color:var(--text-light);
+    font-size:20px;
+}
+
+.temperature-section{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    margin-top:40px;
+}
+
+.temperature{
+    display:flex;
+    align-items:flex-start;
+}
+
+.temperature h2{
+    font-size:120px;
+    line-height:1;
+    font-weight:700;
+}
+
+/* Degree symbol */
+.temperature span{
+    font-size:45px;
+    margin-top:15px;
+}
+
+.weather-icon img{
+    width:180px;
+}
+
+.weather-description{
+    margin-top:25px;
+}
+
+.weather-description h3{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.weather-description p{
+    color:var(--text-light);
+    font-size:24px;
+}
+
