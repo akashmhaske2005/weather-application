@@ -53,12 +53,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 16px;
 }
 
 .app{
     width:100%;
-    max-width:1400px;
+    max-width:1350px;
     background:rgba(15,23,42,.55);
     backdrop-filter:blur(14px);
     border-radius:25px;
@@ -67,7 +67,7 @@ body {
 }
 
 .hero{
-    padding:35px;
+    padding:42px 52px;
 }
 
 .navbar{
@@ -85,25 +85,27 @@ body {
 }
 
 .logo i{
-    font-size:32px;
+    font-size:26px;
     color:#FFD54A;
 }
 
 .logo h2{
-    font-size:30px;
+    font-size:22px;
     font-weight:600;
 }
 
 .search-box{
     flex:1;
-    max-width:550px;
+    max-width:520px;
     display:flex;
     align-items:center;
     gap:15px;
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.06);
+    backdrop-filter: blur(18px);
+    border:1px solid rgba(255,255,255,.08);
     border-radius:50px;
-    padding:12px 20px;
+    padding:0 20px;
+    height: 58px;
 }
 
 .search-box i{
@@ -116,7 +118,7 @@ body {
     border:none;
     outline:none;
     color:white;
-    font-size:16px;
+    font-size:15px;
 }
 
 .search-box input::placeholder{
@@ -124,8 +126,8 @@ body {
 }
 
 #search-btn{
-    width:40px;
-    height:40px;
+    width:42px;
+    height:42px;
     border-radius:50%;
     border:none;
     cursor:pointer;
@@ -140,11 +142,13 @@ body {
 
 .location-btn{
     border:none;
-    padding:14px 22px;
+    height: 58px;
+    padding:0 26px;
     border-radius:50px;
     background:#38bdf8;
     color:white;
     font-size:15px;
+    font-weight: 500;
     cursor:pointer;
     display:flex;
     align-items:center;
@@ -156,26 +160,48 @@ body {
     transform:translateY(-2px);
 }
 
+/* Hero Section */
+
 .weather-content{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-top:60px;
+    margin-top:45px;
+    gap:60px;
+}
+
+/* Hero Image (Nearby Place) */
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:560px;
+    height:340px;
+    object-fit:cover;
+    border-radius:28px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
 .weather-info{
     color:white;
+    width: 480px;
+    flex-shrink: 0;
 }
 
 .city-section h1{
-    font-size:64px;
+    font-size:52px;
     font-weight:700;
 }
 
 .city-section p{
     margin-top:10px;
     color:var(--text-light);
-    font-size:20px;
+    font-size:18px;
 }
 
 .temperature-section{
@@ -191,19 +217,20 @@ body {
 }
 
 .temperature h2{
-    font-size:120px;
+    font-size:90px;
     line-height:1;
     font-weight:700;
 }
 
 /* Degree symbol */
 .temperature span{
-    font-size:45px;
+    font-size:34px;
     margin-top:15px;
+    vertical-align: top;
 }
 
 .weather-icon img{
-    width:180px;
+    width:135px;
 }
 
 .weather-description{
@@ -211,13 +238,13 @@ body {
 }
 
 .weather-description h3{
-    font-size:42px;
+    font-size:28px;
     margin-bottom:10px;
 }
 
 .weather-description p{
     color:var(--text-light);
-    font-size:24px;
+    font-size:18px;
 }
 
 /* Main Card */
@@ -226,38 +253,38 @@ body {
     margin-top:50px;
     display:grid;
     grid-template-columns:repeat(6,1fr);
-    gap:20px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    backdrop-filter:blur(15px);
+    gap:12px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
     border-radius:20px;
-    padding:25px;
+    padding:20px 24px;
 }
 
 /* Each Detail Card */
 .detail-card{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
     color:white;
 }
 
 /* Icons */
 .detail-card i{
-    font-size:28px;
+    font-size:22px;
     color:var(--accent);
 }
 
 /* Labels */
 .detail-card p{
-    font-size:15px;
+    font-size:13px;
     color:var(--text-light);
 }
 
 /* Values */
 .detail-card h3{
     margin-top:6px;
-    font-size:24px;
+    font-size:20px;
     font-weight:600;
 }
 
@@ -273,12 +300,12 @@ body {
 /* Forecast Section */
 
 .forecast{
-    padding:35px;
+    padding:20px 35px 30px;
 }
 
 .forecast h2{
     color:white;
-    font-size:34px;
+    font-size:30px;
     margin-bottom:30px;
 }
 
@@ -289,14 +316,15 @@ body {
 }
 
 .forecast-card{
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
     border-radius:20px;
-    padding:25px;
+    padding:22px 52px 30px;
     text-align:center;
     color:white;
     transition:.3s;
+    min-height: 240px;
 }
 
 /* Hover Effect */
@@ -307,7 +335,7 @@ body {
 
 /* Day */
 .forecast-card h3{
-    font-size:24px;
+    font-size:20px;
     margin-bottom:8px;
 }
 
@@ -315,37 +343,38 @@ body {
 .forecast-card p{
     color:var(--text-light);
     margin-bottom:20px;
+    font-size:14px;
 }
 
 /* Icon */
 .forecast-card img{
-    width:80px;
+    width:68px;
     margin:15px 0;
 }
 
 /* Temperature */
 .forecast-card h4{
-    font-size:34px;
+    font-size:28px;
     margin-bottom:8px;
 }
 
 /* Minimum Temperature */
 .forecast-card span{
     color:var(--text-light);
-    font-size:22px;
+    font-size:18px;
 }
 
 /* Footer Section */
 
 .footer{
-    padding:35px;
+    padding:24px 52px;
     border-top:1px solid rgba(255,255,255,.12);
 }
 
 /* Recent Searches */
 .recent-searches h3{
     color:white;
-    font-size:28px;
+    font-size:22px;
     margin-bottom:20px;
 }
 
@@ -358,7 +387,8 @@ body {
 
 /* Search Chips */
 .history-item{
-    padding:10px 18px;
+    padding:8px 16px;
+    font-size: 14px;
     background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.12);
     border-radius:30px;
@@ -386,7 +416,7 @@ body {
 /* Footer Text */
 .footer-bottom p{
     color:var(--text-light);
-    font-size:16px;
+    font-size:15px;
 }
 
 /* Heart Icon */
