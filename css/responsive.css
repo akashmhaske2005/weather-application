@@ -1,0 +1,293 @@
+/* ===================================================
+   Laptop (1200px)
+=================================================== */
+@media (max-width:1200px){
+
+    .hero,
+    .footer{
+        padding:35px;
+    }
+
+    .weather-content{
+        gap:40px;
+    }
+
+    .weather-info{
+        width:430px;
+    }
+
+    .city-section h1{
+        font-size:46px;
+    }
+
+    .temperature h2{
+        font-size:80px;
+    }
+
+    .weather-details{
+        grid-template-columns:repeat(3,1fr);
+        gap:20px;
+    }
+
+    .forecast-container{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+/* ===================================================
+   Tablet (992px)
+=================================================== */
+
+@media (max-width:992px){
+
+    .hero{
+        padding:30px;
+    }
+
+    .navbar{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .logo{
+        width:100%;
+        justify-content:center;
+    }
+
+    .search-box{
+        order:2;
+        max-width:100%;
+    }
+
+    .location-btn{
+        order:3;
+    }
+
+    .weather-content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .weather-info{
+        width:100%;
+    }
+
+    .temperature-section{
+        justify-content:center;
+    }
+
+    .weather-details{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .forecast-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* ===================================================
+   Large Mobile (768px)
+=================================================== */
+
+@media (max-width:768px){
+
+    .hero,
+    .forecast,
+    .footer{
+        padding:25px;
+    }
+
+    .navbar{
+        gap:15px;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .location-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .city-section h1{
+        font-size:40px;
+    }
+
+    .city-section p{
+        font-size:16px;
+    }
+
+    .temperature h2{
+        font-size:72px;
+    }
+
+    .weather-icon img{
+        width:110px;
+    }
+
+    .weather-description h3{
+        font-size:24px;
+    }
+
+    /* Weather Details */
+
+    .weather-details{
+        grid-template-columns:repeat(3,1fr);
+        gap:14px;
+        padding:18px;
+    }
+
+    .detail-card{
+        flex-direction:column;
+        justify-content:center;
+        text-align:center;
+        gap:8px;
+        padding:12px 6px;
+    }
+
+    .detail-card h3{
+        font-size:18px;
+    }
+
+    .detail-card p{
+        font-size:12px;
+    }
+
+    /* Forecast */
+
+    .forecast-container{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .forecast-card{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        min-height:auto;
+        padding:18px 20px;
+
+        text-align:left;
+    }
+
+    .forecast-date{
+        align-items:flex-start;
+    }
+
+    .forecast-temp{
+        align-items:flex-end;
+    }
+
+    .forecast-card img{
+        width:46px;
+        margin:0;
+    }
+
+    .forecast-card h3,
+    .forecast-card p,
+    .forecast-card h4,
+    .forecast-card span{
+        margin:0;
+    }
+
+}
+
+/* ===================================================
+   Small Mobile (576px)
+=================================================== */
+
+@media (max-width:576px){
+
+    body{
+        padding:8px;
+    }
+
+    .app{
+        border-radius:18px;
+    }
+
+    .hero,
+    .forecast,
+    .footer{
+        padding:20px;
+    }
+
+    .logo h2{
+        font-size:20px;
+    }
+
+    .search-box{
+        height:52px;
+    }
+
+    .location-btn{
+        height:52px;
+        font-size:14px;
+    }
+
+    .city-section h1{
+        font-size:34px;
+    }
+
+    .temperature-section{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .temperature h2{
+        font-size:60px;
+    }
+
+    .temperature span{
+        font-size:24px;
+    }
+
+    .weather-icon img{
+        width:90px;
+    }
+
+    .weather-details{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .detail-card h3{
+        font-size:16px;
+    }
+
+    .detail-card p{
+        font-size:11px;
+    }
+
+    .forecast-card{
+        padding:16px;
+    }
+
+    .forecast-card img{
+        width:40px;
+    }
+
+    .forecast-card h3{
+        font-size:17px;
+    }
+
+    .forecast-card p{
+        font-size:12px;
+    }
+
+    .forecast-card h4{
+        font-size:22px;
+    }
+
+    .forecast-card span{
+        font-size:15px;
+    }
+
+    .footer-bottom{
+        text-align:center;
+    }
+
+}
+

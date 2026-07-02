@@ -423,3 +423,53 @@ Step 1 starts now
 We'll not write any JavaScript yet.
 
 The first milestone is to build a polished, responsive UI using only HTML and CSS that matches the design we planned. Once the UI is complete and looks good on desktop and mobile, we'll move on to connecting the APIs. This keeps layout problems separate from logic and makes debugging much easier.
+
+
+
+
+
+Suggested Implementation Order
+Phase 1
+Connect Current Weather API
+Display:
+City
+Temperature
+Weather
+Humidity
+Wind
+Pressure
+Visibility
+Sunrise
+Sunset
+Phase 2
+Connect 5-Day Forecast
+Phase 3
+Current Location
+Phase 4
+Recent Searches (LocalStorage)
+Phase 5
+Dynamic Background Images
+Phase 6
+Loading Spinner
+Phase 7
+Error Handling
+City not found
+
+↓
+
+Display card
+
+❌ City not found
+Try another city
+Phase 8
+Enter Key Search
+Phase 9
+Weather Animations
+
+Examples:
+
+Rain → falling rain animation
+Snow → snowflakes
+Thunderstorm → lightning flash
+Clear → sunlight glow
+Mist → fog overlay
