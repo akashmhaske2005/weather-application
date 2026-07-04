@@ -473,3 +473,141 @@ Snow → snowflakes
 Thunderstorm → lightning flash
 Clear → sunlight glow
 Mist → fog overlay
+
+
+
+
+
+
+Revised Roadmap
+✅ Completed
+Project structure
+Modular architecture
+Current Weather API
+UI updates
+Search (basic)
+Phase 2 (Reordered)
+Step 1 — Geolocation (Now)
+
+Instead of
+
+Pune
+
+do
+
+Browser
+↓
+
+navigator.geolocation
+
+↓
+
+Latitude
+Longitude
+
+↓
+
+getWeatherByCoords()
+
+↓
+
+updateCurrentWeather()
+
+If permission is denied:
+
+↓
+
+loadWeather("Pune")
+Step 2 — Forecast
+
+Connect
+
+/forecast
+
+and generate all five forecast cards dynamically.
+
+Step 3 — Background Images
+
+Only after weather is working.
+
+Background Images
+
+You have three realistic choices.
+
+Option A — Curated Images (Easy)
+assets/images/
+
+pune.jpg
+delhi.jpg
+mumbai.jpg
+...
+
+Pros:
+
+Instant
+Offline
+Consistent
+
+Cons:
+
+Limited cities
+Option B — Image API (Recommended)
+
+Use an image service (such as Unsplash or Pexels) to fetch a city/landmark image based on the weather location.
+
+Flow:
+
+Location
+
+↓
+
+OpenWeather
+
+↓
+
+City Name
+
+↓
+
+Image API
+
+↓
+
+Background updates
+
+Pros:
+
+Works for almost any city
+Looks professional
+
+Cons:
+
+One extra API call
+Option C — Hybrid (My recommendation)
+Open App
+
+↓
+
+Location Weather
+
+↓
+
+Default Background
+
+↓
+
+Weather visible immediately
+
+↓
+
+Image downloads
+
+↓
+
+Fade animation
+
+↓
+
+Background replaced
+
+This gives the fastest perceived performance and the best UX.
