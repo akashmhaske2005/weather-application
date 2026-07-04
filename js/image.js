@@ -2,7 +2,9 @@
    Unsplash Configuration
 ========================================== */
 
-const ACCESS_KEY = "xI7Oxt4Iym0Xr02E4-eszlefpcQZiCBYgAjhLZ2O4kU";
+import { CONFIG } from "./config.js";
+
+const ACCESS_KEY = CONFIG.UNSPLASH_ACCESS_KEY;
 
 const BASE_URL =
     "https://api.unsplash.com/search/photos";

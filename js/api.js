@@ -2,7 +2,9 @@
    OpenWeather API Configuration
 ========================================== */
 
-const API_KEY = "4a0355efea2367d4522f91a82466bac7";
+import { CONFIG } from "./config.js";
+
+const API_KEY = CONFIG.OPENWEATHER_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 const GEO_URL = "https://api.openweathermap.org/geo/1.0";
 
