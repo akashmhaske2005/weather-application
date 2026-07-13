@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Application</title>
+    <title>WeatherApp — Live Weather Forecast</title>
+    <meta name="description" content="Real-time weather forecast for any city. Search by city name or use your current location to get instant weather, hourly and 5-day forecasts.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/animations.css">
 </head>
 
 <body>
 
     <div class="app">
+
+        <!-- Weather animation overlay is injected inside .hero by weather-animation.js -->
 
         <!-- Hero Section -->
         <section class="hero" id="hero">
@@ -36,83 +38,75 @@
                     <i class="fa-solid fa-cloud-sun"></i>
                     <h2>Weather App</h2>
                 </div>
+
                 <!-- Search Box -->
                 <div class="search-box">
-
                     <i class="fa-solid fa-magnifying-glass"></i>
-
                     <input type="text" id="search-input" placeholder="Search for a city..." autocomplete="off">
-
                     <button id="search-btn">
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
-
-                    <div id="suggestions" class="suggestions">
-                    </div>
-
+                    <div id="suggestions" class="suggestions"></div>
                 </div>
-                <!-- Current Location Button -->
-                <button class="location-btn">
-                    <i class="fa-solid fa-location-crosshairs"></i>
-                    Current Location
-                </button>
+
+                <!-- Right controls -->
+                <div class="nav-controls">
+                    <button class="location-btn" title="Use current location">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        Current Location
+                    </button>
+                    <button id="unit-toggle" title="Toggle °C / °F">°F</button>
+                </div>
+
             </nav>
 
             <!-- Weather Content -->
-
             <div class="weather-content">
 
-                <!-- Left Side -->
+                <!-- Permission Card -->
+                <div id="permission-card" class="permission-card">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <h2>Current Location</h2>
+                    <p>Allow location access to instantly see weather for your area. You can also search any city.</p>
+                    <span class="permission-status">Waiting for your permission...</span>
+                </div>
+
+                <!-- Left: City + Temp -->
                 <div class="weather-info">
                     <div class="city-section">
-                        <h1 id="city-name">Delhi, India</h1>
-                        <p id="current-date">
-                            Saturday, 25 May 2024 • 10:30 AM
-                        </p>
-
+                        <h1 id="city-name"></h1>
+                        <p id="current-date"></p>
                     </div>
 
-                    <!-- Temperature -->
-                    <div class="temperature-section">
+                    <!-- Temperature + icon side by side -->
+                    <div class="temperature-section" id="temperature-wrap">
                         <div class="temperature">
-                            <h2 id="temperature">
-                                28<span>°C</span>
-                            </h2>
-
+                            <h2 id="temperature"><span></span></h2>
                         </div>
-
                         <div class="weather-icon">
-                            <img src="/assets/icons/cloud-sun.png" alt="Weather Icon" id="weather-icon">
+                            <img src="" alt="Weather Icon" id="weather-icon">
                         </div>
-
                     </div>
-                    <!-- Weather Description -->
-                    <div class="weather-description">
-                        <h3 id="weather-condition">
-                            Partly Cloudy
-                        </h3>
-                        <!-- Feels Like -->
-                        <p>
-                            Feels like
-                            <span id="feels-like">30°C</span>
-                        </p>
 
+                    <!-- Condition + feels-like -->
+                    <div class="weather-description">
+                        <h3 id="weather-condition"></h3>
+                        <p>Feels like <span id="feels-like"></span></p>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Weather Details -->
+            <!-- Weather Details (detail cards grid) -->
             <div class="weather-details">
+
                 <!-- Humidity -->
                 <div class="detail-card">
                     <i class="fa-solid fa-droplet"></i>
                     <div>
                         <p>Humidity</p>
-                        <h3 id="humidity">64%</h3>
-
+                        <h3 id="humidity"></h3>
                     </div>
-
                 </div>
 
                 <!-- Wind -->
@@ -120,10 +114,8 @@
                     <i class="fa-solid fa-wind"></i>
                     <div>
                         <p>Wind Speed</p>
-                        <h3 id="wind-speed">12 km/h</h3>
-
+                        <h3 id="wind-speed"></h3>
                     </div>
-
                 </div>
 
                 <!-- Pressure -->
@@ -131,10 +123,8 @@
                     <i class="fa-solid fa-gauge-high"></i>
                     <div>
                         <p>Pressure</p>
-                        <h3 id="pressure">1012 hPa</h3>
-
+                        <h3 id="pressure"></h3>
                     </div>
-
                 </div>
 
                 <!-- Visibility -->
@@ -142,10 +132,8 @@
                     <i class="fa-solid fa-eye"></i>
                     <div>
                         <p>Visibility</p>
-                        <h3 id="visibility">8 km</h3>
-
+                        <h3 id="visibility"></h3>
                     </div>
-
                 </div>
 
                 <!-- Sunrise -->
@@ -153,10 +141,8 @@
                     <i class="fa-solid fa-sun"></i>
                     <div>
                         <p>Sunrise</p>
-                        <h3 id="sunrise">5:28 AM</h3>
-
+                        <h3 id="sunrise"></h3>
                     </div>
-
                 </div>
 
                 <!-- Sunset -->
@@ -164,56 +150,46 @@
                     <i class="fa-solid fa-moon"></i>
                     <div>
                         <p>Sunset</p>
-                        <h3 id="sunset">7:12 PM</h3>
-
+                        <h3 id="sunset"></h3>
                     </div>
-
                 </div>
 
             </div>
 
         </section>
 
-        <!-- Forecast -->
+        <!-- Hourly Forecast Strip -->
+        <section class="hourly-section" id="hourly-section">
+            <h2>Hourly Forecast</h2>
+            <div class="hourly-container" id="hourly-container" role="list"></div>
+        </section>
 
-        <section class="forecast">
+        <!-- 5-Day Forecast -->
+        <section class="forecast" id="forecast-section">
             <h2>5 Day Forecast</h2>
-
-            <div class="forecast-container" id="forecast-container">
-
-            </div>
-
+            <div class="forecast-container" id="forecast-container"></div>
         </section>
 
         <!-- Footer -->
-
         <footer class="footer">
 
             <!-- Recent Searches -->
             <div class="recent-searches">
-                <h3>Recent Searches</h3>
-
-                <div class="search-history" id="search-history">
-                    <span class="history-item">Pune</span>
-                    <span class="history-item">Delhi</span>
-                    <span class="history-item">Mumbai</span>
-
+                <div class="recent-header">
+                    <h3>Recent Searches</h3>
+                    <button id="clear-history-btn" class="clear-btn">Clear</button>
                 </div>
-
+                <div class="search-history" id="search-history"></div>
             </div>
+
             <!-- Credits -->
             <div class="footer-bottom">
-                <p>
-                    Made with
-                    <i class="fa-solid fa-heart"></i>
-                    by <strong>Akash</strong>
-                </p>
-
+                <p>Made with <i class="fa-solid fa-heart"></i> by <strong>Akash</strong></p>
             </div>
+
         </footer>
 
     </div>
-
 
     <script type="module" src="/js/app.js"></script>
 </body>

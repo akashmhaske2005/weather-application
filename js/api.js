@@ -77,3 +77,47 @@ export async function getCitySuggestions(query) {
     return await fetchWeather(url);
 
 }
+
+/* ==========================================
+   Check Location Permission
+========================================== */
+
+async function checkLocationPermission() {
+
+    if (!navigator.permissions) {
+
+        return;
+
+    }
+
+    const permission = await navigator.permissions.query({
+        name: "geolocation"
+    });
+
+    switch (permission.state) {
+
+        case "granted":
+
+            hidePermissionCard();
+            requestLocation();
+            break;
+
+        case "prompt":
+
+            showPermissionWaiting();
+            break;
+
+        case "denied":
+
+            showPermissionDenied();
+            loadWeather(DEFAULT_CITY);
+            break;
+    }
+
+    permission.onchange = () => {
+
+        checkLocationPermission();
+
+    };
+
+}

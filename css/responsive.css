@@ -1,36 +1,36 @@
 /* ===================================================
    Laptop (1200px)
 =================================================== */
-@media (max-width:1200px){
+@media (max-width:1200px) {
 
     .hero,
-    .footer{
-        padding:35px;
+    .footer {
+        padding: 35px;
     }
 
-    .weather-content{
-        gap:40px;
+    .weather-content {
+        gap: 40px;
     }
 
-    .weather-info{
-        width:430px;
+    .weather-info {
+        width: 430px;
     }
 
-    .city-section h1{
-        font-size:46px;
+    .city-section h1 {
+        font-size: 46px;
     }
 
-    .temperature h2{
-        font-size:80px;
+    .temperature h2 {
+        font-size: 80px;
     }
 
-    .weather-details{
-        grid-template-columns:repeat(3,1fr);
-        gap:20px;
+    .weather-details {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
 
-    .forecast-container{
-        grid-template-columns:repeat(3,1fr);
+    .forecast-container {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -38,50 +38,63 @@
    Tablet (992px)
 =================================================== */
 
-@media (max-width:992px){
+@media (max-width:992px) {
 
-    .hero{
-        padding:30px;
+    .hero {
+        padding: 30px;
     }
 
-    .navbar{
-        flex-wrap:wrap;
-        justify-content:center;
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .logo{
-        width:100%;
-        justify-content:center;
+    .logo {
+        width: 100%;
+        justify-content: center;
     }
 
-    .search-box{
-        order:2;
-        max-width:100%;
+    .search-box {
+        order: 2;
+        max-width: 100%;
     }
 
-    .location-btn{
-        order:3;
+    /* nav-controls wraps both buttons — let them wrap naturally */
+    .nav-controls {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
-    .weather-content{
-        flex-direction:column;
-        text-align:center;
+    .location-btn {
+        order: 3;
     }
 
-    .weather-info{
-        width:100%;
+    .unit-toggle,
+    #unit-toggle {
+        order: 4;
     }
 
-    .temperature-section{
-        justify-content:center;
+    .weather-content {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .weather-details{
-        grid-template-columns:repeat(2,1fr);
+    .weather-info {
+        width: 100%;
     }
 
-    .forecast-container{
-        grid-template-columns:repeat(2,1fr);
+    .temperature-section {
+        justify-content: center;
+    }
+
+    .weather-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .forecast-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -89,108 +102,120 @@
    Large Mobile (768px)
 =================================================== */
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
     .hero,
     .forecast,
-    .footer{
-        padding:25px;
+    .hourly-section,
+    .footer {
+        padding: 25px;
     }
 
-    .navbar{
-        gap:15px;
+    .navbar {
+        gap: 15px;
     }
 
-    .search-box{
-        width:100%;
+    .search-box {
+        width: 100%;
     }
 
-    .location-btn{
-        width:100%;
-        justify-content:center;
+    .nav-controls {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
     }
 
-    .city-section h1{
-        font-size:40px;
+    .location-btn {
+        flex: 1;
+        justify-content: center;
     }
 
-    .city-section p{
-        font-size:16px;
+    .city-section h1 {
+        font-size: 40px;
     }
 
-    .temperature h2{
-        font-size:72px;
+    .city-section p {
+        font-size: 16px;
     }
 
-    .weather-icon img{
-        width:110px;
+    .temperature h2 {
+        font-size: 72px;
     }
 
-    .weather-description h3{
-        font-size:24px;
+    .weather-icon img {
+        width: 110px;
+    }
+
+    .weather-description h3 {
+        font-size: 24px;
     }
 
     /* Weather Details */
 
-    .weather-details{
-        grid-template-columns:repeat(3,1fr);
-        gap:14px;
-        padding:18px;
+    .weather-details {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        padding: 18px;
     }
 
-    .detail-card{
-        flex-direction:column;
-        justify-content:center;
-        text-align:center;
-        gap:8px;
-        padding:12px 6px;
+    .detail-card {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 8px;
+        padding: 12px 6px;
     }
 
-    .detail-card h3{
-        font-size:18px;
+    .detail-card h3 {
+        font-size: 18px;
     }
 
-    .detail-card p{
-        font-size:12px;
+    .detail-card p {
+        font-size: 12px;
     }
 
     /* Forecast */
 
-    .forecast-container{
-        display:flex;
-        flex-direction:column;
-        gap:12px;
+    .forecast-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .forecast-card{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
+    .forecast-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        min-height:auto;
-        padding:18px 20px;
+        min-height: auto;
+        padding: 18px 20px;
 
-        text-align:left;
+        text-align: left;
     }
 
-    .forecast-date{
-        align-items:flex-start;
+    .forecast-date {
+        align-items: flex-start;
     }
 
-    .forecast-temp{
-        align-items:flex-end;
+    .forecast-temp {
+        align-items: flex-end;
     }
 
-    .forecast-card img{
-        width:46px;
-        margin:0;
+    .forecast-card img {
+        width: 46px;
+        margin: 0;
     }
 
     .forecast-card h3,
     .forecast-card p,
     .forecast-card h4,
-    .forecast-card span{
-        margin:0;
+    .forecast-card span {
+        margin: 0;
+    }
+
+    /* Permisssion Card */
+    .permission-card {
+        padding: 28px;
     }
 
 }
@@ -199,95 +224,108 @@
    Small Mobile (576px)
 =================================================== */
 
-@media (max-width:576px){
+@media (max-width:576px) {
 
-    body{
-        padding:8px;
+    body {
+        padding: 8px;
     }
 
-    .app{
-        border-radius:18px;
+    .app {
+        border-radius: 18px;
     }
 
     .hero,
     .forecast,
-    .footer{
-        padding:20px;
+    .footer {
+        padding: 20px;
     }
 
-    .logo h2{
-        font-size:20px;
+    .logo h2 {
+        font-size: 20px;
     }
 
-    .search-box{
-        height:52px;
+    .search-box {
+        height: 52px;
     }
 
-    .location-btn{
-        height:52px;
-        font-size:14px;
+    .location-btn {
+        height: 52px;
+        font-size: 14px;
     }
 
-    .city-section h1{
-        font-size:34px;
+    .unit-toggle,
+    #unit-toggle {
+        height: 52px;
+        width: 52px;
     }
 
-    .temperature-section{
-        flex-direction:column;
-        gap:15px;
+    .city-section h1 {
+        font-size: 34px;
     }
 
-    .temperature h2{
-        font-size:60px;
+    .temperature-section {
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .temperature span{
-        font-size:24px;
+    .temperature h2 {
+        font-size: 60px;
     }
 
-    .weather-icon img{
-        width:90px;
+    .temperature span {
+        font-size: 24px;
     }
 
-    .weather-details{
-        grid-template-columns:repeat(2,1fr);
+    .weather-icon img {
+        width: 90px;
     }
 
-    .detail-card h3{
-        font-size:16px;
+    .weather-details {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .detail-card p{
-        font-size:11px;
+    .detail-card h3 {
+        font-size: 16px;
     }
 
-    .forecast-card{
-        padding:16px;
+    .detail-card p {
+        font-size: 11px;
     }
 
-    .forecast-card img{
-        width:40px;
+    .forecast-card {
+        padding: 16px;
     }
 
-    .forecast-card h3{
-        font-size:17px;
+    .forecast-card img {
+        width: 40px;
     }
 
-    .forecast-card p{
-        font-size:12px;
+    .forecast-card h3 {
+        font-size: 17px;
     }
 
-    .forecast-card h4{
-        font-size:22px;
+    .forecast-card p {
+        font-size: 12px;
     }
 
-    .forecast-card span{
-        font-size:15px;
+    .forecast-card h4 {
+        font-size: 22px;
     }
 
-    .footer-bottom{
-        text-align:center;
+    .forecast-card span {
+        font-size: 15px;
     }
 
+    .footer-bottom {
+        text-align: center;
+    }
+
+    /* Permission Card */
+    .permission-card {
+        padding: 22px;
+    }
+
+    .permission-card h2 {
+        font-size: 22px;
+    }
 }
-

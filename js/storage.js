@@ -11,9 +11,15 @@ const MAX_SEARCHES = 5;
 
 export function getRecentSearches() {
 
-    return JSON.parse(
-        localStorage.getItem(STORAGE_KEY)
-    ) || [];
+    try {
+        return JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+        ) || [];
+    } catch {
+        // Corrupted storage — reset gracefully
+        localStorage.removeItem(STORAGE_KEY);
+        return [];
+    }
 
 }
 
@@ -43,3 +49,30 @@ export function saveRecentSearch(city) {
     return searches;
 
 }
+
+/* ==========================================
+   Clear Recent Searches
+========================================== */
+
+export function clearRecentSearches() {
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    return [];
+
+}
+
+/* ==========================================
+   Save / Load Unit Preference (°C or °F)
+========================================== */
+
+const UNIT_KEY = "wx_unit";
+
+export function saveUnit(unit) {
+    localStorage.setItem(UNIT_KEY, unit);
+}
+
+export function loadUnit() {
+    const saved = localStorage.getItem(UNIT_KEY);
+    return saved === "imperial" ? "imperial" : "metric"; // default metric
+}

@@ -36,13 +36,17 @@ export async function getCityBackground(city, country) {
 
         );
 
+        if (!response.ok) {
+            throw new Error(`Unsplash API error: ${response.status}`);
+        }
+
         const data = await response.json();
 
         const imageUrl =
 
             data.results?.[0]?.urls?.regular ||
 
-            "/assets/images/default-bg.jpg";
+            "./assets/images/default-bg.jpg";
 
         imageCache.set(cacheKey, imageUrl);
 
@@ -52,7 +56,7 @@ export async function getCityBackground(city, country) {
 
     catch {
 
-        return "/assets/images/default-bg.jpg";
+        return "./assets/images/default-bg.jpg";
 
     }
 

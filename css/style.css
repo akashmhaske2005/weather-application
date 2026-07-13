@@ -78,6 +78,7 @@ body {
 
 .hero {
     padding: 42px 52px;
+    position: relative; /* needed for hero.permission-visible to affect children */
 }
 
 .navbar {
@@ -85,6 +86,8 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    position: relative;   /* creates stacking context for suggestions dropdown */
+    z-index: 200;
 }
 
 .logo {
@@ -192,10 +195,19 @@ body {
     align-items: center;
     gap: 10px;
     transition: .3s;
+    white-space: nowrap;
 }
 
 .location-btn:hover {
     transform: translateY(-2px);
+}
+
+/* Groups location button + unit toggle side by side in the navbar */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 /* Hero Section */
@@ -205,12 +217,16 @@ body {
     min-height: 360px;
     display: flex;
     align-items: center;
+    justify-content: center;   /* center weather-info horizontally */
+    position: relative;
 }
 
 .weather-info {
     color: white;
-    width: 480px;
-    flex-shrink: 0;
+    width: 100%;
+    max-width: 720px;
+    text-align: center;
+    visibility: hidden; /* revealed by JS when data loads */
 }
 
 .city-section h1 {
@@ -227,6 +243,7 @@ body {
 .temperature-section {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 40px;
     margin-top: 40px;
 }
@@ -251,10 +268,13 @@ body {
 
 .weather-icon img {
     width: 135px;
+    opacity: 0;
+    transition: .4s;
 }
 
 .weather-description {
     margin-top: 25px;
+    text-align: center;
 }
 
 .weather-description h3 {
@@ -279,6 +299,7 @@ body {
     backdrop-filter: blur(18px);
     border-radius: 20px;
     padding: 20px 24px;
+    visibility: hidden; /* revealed by JS when data loads */
 }
 
 /* Each Detail Card */
@@ -317,11 +338,109 @@ body {
     transform: translateY(-4px);
 }
 
+/* ==========================================
+   Hourly Forecast Section
+========================================== */
+
+.hourly-section {
+    padding: 0 35px 10px;
+    visibility: hidden;
+}
+
+.hourly-section h2 {
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    letter-spacing: .3px;
+}
+
+.hourly-container {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.18) transparent;
+}
+
+.hourly-container::-webkit-scrollbar { height: 4px; }
+.hourly-container::-webkit-scrollbar-track { background: transparent; }
+.hourly-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.2);
+    border-radius: 4px;
+}
+
+.hourly-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    /* flex: grow | don't-shrink-below-basis | basis
+       On large screens cards expand to fill the row;
+       on small screens they stay ≥80px and the row scrolls. */
+    flex: 1 0 80px;
+    max-width: 160px;          /* cap on very wide screens so they don't become huge */
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(18px);
+    border-radius: 18px;
+    padding: 14px 12px;
+    color: white;
+    text-align: center;
+    transition: transform .25s, background .25s, border-color .25s;
+}
+
+.hourly-card:hover {
+    background: rgba(255,255,255,.13);
+    border-color: rgba(255,255,255,.22);
+    transform: translateY(-4px);
+}
+
+.hourly-card.now {
+    background: rgba(56,189,248,.15);
+    border-color: rgba(56,189,248,.4);
+}
+
+.hourly-card.now .hourly-time {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.hourly-time {
+    font-size: 11px;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.hourly-card img {
+    width: 42px;
+    height: 42px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+}
+
+.hourly-temp {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hourly-desc {
+    font-size: 10px;
+    color: rgba(255,255,255,.5);
+    max-width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Forecast Section */
 
 .forecast {
     padding: 20px 35px 30px;
     background: transparent;
+    visibility: hidden;
 }
 
 .forecast h2 {
@@ -408,7 +527,6 @@ body {
 .recent-searches h3 {
     color: white;
     font-size: 22px;
-    margin-bottom: 20px;
 }
 
 /* Search History Container */
@@ -456,4 +574,315 @@ body {
 .footer-bottom i {
     color: #ff4d6d;
     margin: 0 6px;
+}
+
+/* ==========================================
+   Skeleton Loading
+========================================== */
+
+.loading {
+    pointer-events: none;
+}
+
+.loading h1,
+.loading h2,
+.loading h3,
+.loading p,
+.loading span,
+.loading img,
+.loading i {
+    color: transparent !important;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,.08) 25%,
+        rgba(255,255,255,.18) 50%,
+        rgba(255,255,255,.08) 75%
+    );
+
+    background-size: 250% 100%;
+    border-radius: 8px;
+    animation: skeleton 1.2s infinite;
+}
+
+.loading img {
+    opacity: 0;
+}
+
+.loading h1 {
+    width: 260px;
+    height: 58px;
+}
+
+.loading h2 {
+    width: 170px;
+    height: 95px;
+}
+
+.loading h3 {
+    width: 160px;
+    height: 28px;
+}
+
+.loading p {
+    width: 120px;
+    height: 18px;
+}
+
+.loading .detail-card h3 {
+    width: 70px;
+    height: 22px;
+}
+
+.loading .detail-card p {
+    width: 60px;
+    height: 14px;
+}
+
+.loading .forecast-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading .forecast-card * {
+    opacity: 0;
+}
+
+.loading .forecast-card::after {
+    content: "";
+    position: absolute;
+    inset: 16px;
+    border-radius: 12px;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,.08) 25%,
+        rgba(255,255,255,.18) 50%,
+        rgba(255,255,255,.08) 75%
+    );
+
+    background-size: 250% 100%;
+    animation: skeleton 1.2s infinite;
+}
+
+/* Hourly skeleton cards */
+.loading .hourly-card.skeleton {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading .hourly-card.skeleton * {
+    opacity: 0;
+}
+
+.loading .hourly-card.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,.07) 25%,
+        rgba(255,255,255,.16) 50%,
+        rgba(255,255,255,.07) 75%
+    );
+    background-size: 250% 100%;
+    animation: skeleton 1.3s infinite;
+}
+
+@keyframes skeleton {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+
+/* ==========================================
+   Permission Card
+========================================== */
+.permission-card{
+    width:100%;
+    height: 320px;
+    max-width:520px;
+    margin:auto;
+    padding:40px;
+    text-align:center;
+    color:white;
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(25px);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:25px;
+    animation:fade .35s ease;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, .25) ;
+    opacity: 1;
+    visibility: visible;
+}
+
+.permission-card i{
+    font-size:52px;
+    color:#38bdf8;
+    margin-bottom:18px;
+}
+
+.permission-card h2{
+    margin-bottom:12px;
+}
+
+.permission-card p{
+    color:#d1d5db;
+    line-height:1.7;
+}
+
+.permission-status{
+    display:block;
+    margin-top:24px;
+    color:#38bdf8;
+    font-weight:500;
+}
+
+.permission-card.hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Hide weather-details, forecast, and hourly when permission card is active */
+.hero.permission-visible .weather-details,
+.hero.permission-visible + .hourly-section,
+.hero.permission-visible ~ .forecast {
+    visibility: hidden !important;
+    pointer-events: none;
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+transform:none;
+
+}
+
+}
+
+/* ==========================================
+   Unit Toggle Button (°C / °F)
+========================================== */
+
+/* Unit toggle — matches both class and ID usage */
+.unit-toggle,
+#unit-toggle {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .25);
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(12px);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: .3s;
+    flex-shrink: 0;
+}
+
+.unit-toggle:hover,
+#unit-toggle:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.08);
+}
+
+/* Recent searches header — supports both old and new class names */
+.recent-searches-header,
+.recent-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.recent-searches-header h3,
+.recent-header h3 {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+/* Clear History Button — supports both class and id */
+.clear-history-btn,
+.clear-btn,
+#clear-history-btn.clear-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: transparent;
+    color: var(--text-light);
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.clear-history-btn:hover,
+.clear-btn:hover {
+    background: rgba(239, 68, 68, .2);
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+/* ==========================================
+   Toast Notification
+========================================== */
+
+.toast {
+    position: fixed;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+    max-width: 90vw;
+    text-align: center;
+}
+
+/* Red — city not found / API errors */
+.toast.toast-error {
+    background: #ef4444;
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.35);
+}
+
+/* Amber — permission denied with settings instructions */
+.toast.toast-warning {
+    background: #f59e0b;
+    color: #1c1917;
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+}
+
+.toast.toast-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
